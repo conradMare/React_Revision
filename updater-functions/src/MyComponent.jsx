@@ -11,7 +11,27 @@ function MyComponent() {
     const [count, setCount] = useState(0);
 
     function increment() {
-        setCount(count + 1);
+
+        // Uses the CURRENT state to calculate the NEXT state.
+        // set functions DO NOT trigger an update.
+        // React batches together state updates for performance reasons.
+        // NEXT state becomes the CURRENT state after an update.
+
+        // setCount(count + 1);
+        // // UPDATE
+        // setCount(count + 1);
+        // // UPDATE
+        // setCount(count + 1);
+        // // UPDATE
+
+        // UPDATER FUNCTION:
+        // Takes the PENDING state to calculate NEXT state.
+        // React puts your updater function in a queue (waiting in line)
+        // During the next render, it will call them in the same order.
+
+        setCount(c => c + 1);
+        setCount(c => c + 1);
+        setCount(c => c + 1);
     }
 
     function reset() {
@@ -19,10 +39,13 @@ function MyComponent() {
     }
 
     function decrement() {
-        setCount(count - 1);
+        // setCount(count - 1);
+
+        // UPDATER FUNCTION
+        setCount(c => c - 1);
     }
 
-    return(
+    return (
         <div>
             <h1>Count: {count}</h1>
             <button onClick={increment} >Increment</button>
