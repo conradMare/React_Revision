@@ -14,12 +14,42 @@
 // #2 DOM Manipulation
 // #3 Subscriptions (real-time updates)
 // #4 Fetching Data from an API
-// #5 Clean up when a component mounts
+// #5 Clean up when a component unmounts
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function MyComponent() {
-    return(<></>);
+
+    const [count, setCount] = useState(0);
+    const [color, setColor] = useState("green");
+
+    useEffect(() => {
+        document.title = `Count: ${count} ${color}`;
+
+        return() => {
+            // SOME CLEAN UP CODE
+        }
+    }, [count, color]);
+
+    function addCount() {
+        setCount(c => c + 1);
+    }
+
+    function subtractCount() {
+        setCount(c => c - 1);
+    }
+
+    function changeColor() {
+        setColor(c => c === "green" ? "red" : "green");
+    }
+
+    return(<>
+        <p style={{color: color}}>Count: {count}</p>
+        <button onClick={addCount}>Add</button>
+        <button onClick={subtractCount}>Subtract</button>
+        <br/>
+        <button onClick={changeColor}>Change Color</button>
+    </>);
 }
 
 export default MyComponent
