@@ -3,7 +3,10 @@ import DigitalClock from "./DigitalClock"
 function App() {
 
   return (
-    <DigitalClock />
+    <div>
+      <DigitalClock />
+      <DigitalClock />
+    </div>
   );
 }
 
