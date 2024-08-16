@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import App from "./App";
 
 ReactDOM.render(
   <div>
-    <h1 className="heading">Hello World!</h1>
+    <App />
+    <App />
   </div>,
   document.getElementById('root')
 );
