@@ -1,5 +1,4 @@
 import React from "react";
-import contacts from "../contacts";
 
 function Card(props) {
     return (
