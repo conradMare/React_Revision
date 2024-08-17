@@ -1,15 +1,3 @@
-body {
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(90deg, rgb(50, 50, 50), white);
-}
-
-.header {
-    font-size: 30px;
-    text-align: center;
-}
-
-.footer {
-    font-size: 10px;
-    text-align: center;
+.my-style {
+    color: red;
 }
