@@ -1,17 +1,17 @@
 import React from "react";
+import Form from "./components/Form";
 import "./App.css";
-import Login from "./components/Login";
 
-let isLoggedIn = "false";
-
-const currentTime = new Date().getHours();
+var userIsRegistered = false;
 
 function App() {
-    return (
-        <div className="container">
-            {isLoggedIn === "true" ? <h1>Hello</h1> : <Login />}
-        </div>
-    );
+  return (
+    <div className="container">
+      <Form 
+        isRegistered={userIsRegistered}
+      />
+    </div>
+  );
 }
 
 export default App;
