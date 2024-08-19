@@ -1,31 +1,31 @@
 import React from "react";
 import "./App.css";
+import emojipedia from "./emojipedia";
+import Card from "./components/Card";
+
+function createCard(emojipedia) {
+    return(
+        <Card 
+            key={emojipedia.id}
+            emoji={emojipedia.emoji}
+            name={emojipedia.name}
+            meaning={emojipedia.meaning}
+        />
+    )
+}
 
 function App() {
+  return (
+    <div>
+      <h1>
+        <span>emojipedia</span>
+      </h1>
 
-    const date = new Date();
-    const currentTime = date.getHours();
-
-    let greeting;
-
-    const customColor = {
-        color: ""
-    }
-
-    if(currentTime < 12) {
-        greeting = "Good Morning";
-        customColor.color = "red";
-    } else if(currentTime < 18) {
-        greeting = "Good Afternoon";
-        customColor.color = "green";
-    } else {
-        greeting = "Good Evening";
-        customColor.color = "blue";
-    }
-
-    return(
-        <h1 style={customColor}>{greeting}</h1>
-    );
+      <dl className="dictionary">
+        {emojipedia.map(createCard)}
+      </dl>
+    </div>
+  );
 }
 
 export default App;
