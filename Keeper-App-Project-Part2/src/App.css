@@ -4,7 +4,7 @@
     box-sizing: border-box;
   }
   html {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Grey Qo", cursive;
   }
   body {
     background: #eee;
@@ -20,7 +20,7 @@
   
   header h1 {
     color: #fff;
-    font-family: "McLaren", cursive;
+    font-family: "Grey Qo", cursive;
     font-weight: 200;
   }
   
@@ -45,11 +45,11 @@
     float: left;
   }
   .note h1 {
-    font-size: 1.1em;
+    font-size: 1.8em;
     margin-bottom: 6px;
   }
   .note p {
-    font-size: 1.1em;
+    font-size: 1.3em;
     margin-bottom: 10px;
     white-space: pre-wrap;
     word-wrap: break-word;
