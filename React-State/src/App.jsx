@@ -1,22 +1,23 @@
 import React from "react";
 import "./App.css";
-import Card from "./components/Card";
-import inspiration from "./inspiration";
-
-
 
 function App() {
+
+    let isDone = true;
+
+    function strike() {
+        document.getElementById('root').style.textDecoration = "line-through";
+    }
+
+    function unStrike() {
+        document.getElementById('root').style.textDecoration = null;
+    }
+
     return (
         <div>
-            <h1 className="heading">Inspirational Quotes</h1>
-            {inspiration.map(inspiration =>
-                <Card
-                    key={inspiration.id}
-                    name={inspiration.name}
-                    img={inspiration.imgURL}
-                    description={inspiration.description}
-                />
-            )}
+            <h1 style={isDone ? { textDecoration: "line-through "} : null}>Buy Milk</h1>
+            <button onClick={strike}>Change to Strike-Through</button>
+            <button onClick={unStrike}>Change Back</button>
         </div>
     );
 }
