@@ -3,21 +3,21 @@ import "./App.css";
 
 function App() {
 
-  const [count, setCount] = useState(0);
+  setInterval(getTime, 1000);
 
-  function increase() {
-    setCount(count + 1);
+  const now = new Date().toLocaleTimeString();
+  
+  const [time, setTime] = useState(now);
+
+  function getTime() {
+    const newTime = new Date().toLocaleTimeString();
+    setTime(newTime);
   }
 
-  function decrease() {
-    setCount(count - 1);
-  }
-
-  return(
+  return (
     <div className="container">
-      <h1>{count}</h1>
-      <button onClick={increase}>+</button>
-      <button onClick={decrease}>-</button>
+      <h1>{time}</h1>
+      <button onClick={getTime}>Get Time</button>
     </div>
   );
 }
