@@ -3,33 +3,48 @@ import "./App.css";
 
 function App() {
 
-  const [headingText, setHeadingText] = useState("Hello");
-  const [mouseOver, setMouseOver] = useState(false);
+  const [name, setName] = useState("");
+  const [headingText, setHeadingText] = useState("");
+  const [isMouseOver, setIsMouseOver] = useState(false);
 
-  function handleClick() {
-    setHeadingText("Submit");
+  function handleChange(event) {
+    setName(event.target.value)
+  }
+
+  function handleClick(event) {
+    setHeadingText(name);
+
+    event.preventDefault();
   }
 
   function handleMouseOver() {
-    setMouseOver(true);
+    setIsMouseOver(true);
   }
 
   function handleMouseOut() {
-    setMouseOver(false);
+    setIsMouseOver(false);
   }
 
   return (
     <div className="container">
-      <h1>{headingText}</h1>
-      <input type="text" placeholder="What's your name?" />
-      <button
-        style={{ backgroundColor: mouseOver ? "black" : "white" }}
-        onClick={handleClick}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
-      >Submit</button>
+      <h1>Hello {headingText}</h1>
+      <form onSubmit={handleClick}>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="What's your name?"
+          value={name}
+        />
+        <button
+          style={{ backgroundColor: isMouseOver ? "black" : "white" }}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+          type="submit">
+          Submit
+        </button>
+      </form>
     </div>
-  )
+  );
 }
 
 export default App;
