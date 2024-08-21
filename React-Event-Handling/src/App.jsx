@@ -3,18 +3,31 @@ import "./App.css";
 
 function App() {
 
-    const [time, setTime] = useState(new Date().toLocaleTimeString());
+    const [headingText, setHeadingText] = useState("Hello")
+    const [isMousedOver, setIsMousedOver] = useState(false);
 
-    function getTime() {
-        const newTime = new Date().toLocaleTimeString();
-        setTime(newTime);
+    function handleClick() {
+        setHeadingText("Submitted")
     }
 
-   return(
-    <div className="container">
-        <h1>{time}</h1>
-        <button onClick={getTime}>Get time</button>
-    </div>
-   );
+    function handleMouseOver() {
+        setIsMousedOver(true);
+    }
+
+    function handleMouseOut() {
+        setIsMousedOver(false);
+    }
+
+    return (
+        <div className="container">
+            <h1>{headingText}</h1>
+            <input type="text" placeholder="What's your name?" />
+            <button
+                style={{ backgroundColor: isMousedOver ? "black" : "white" }}
+                onClick={handleClick} onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseOut}>Submit</button>
+        </div>
+    );
 }
+
 export default App;
