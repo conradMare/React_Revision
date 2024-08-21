@@ -1,0 +1,9 @@
+body {
+    background-color: rgb(46, 100, 100);
+}
+
+.container {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}
