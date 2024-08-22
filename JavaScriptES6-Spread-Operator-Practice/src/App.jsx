@@ -3,45 +3,41 @@ import "./App.css";
 
 function App() {
 
-  const [contact, setContact] = useState({
-    fName: "",
-    lName: "",
-    email: ""
-  })
-
-  const [isMouseOver, setIsMouseOver] = useState(false);
+  const [inputText, setInputText] = useState("");
+  const [items, setItems] = useState([]);
 
   function handleChange(event) {
-    const { value, name } = event.target;
-
-    setContact(prevValue => {
-      return {
-        ...prevValue,
-        [name]: value
-      }
-    })
+    const newValue = event.target.value;
+    setInputText(newValue);
   }
 
-  function handleMouseOver() {
-    setIsMouseOver(true);
-  }
+  function addItem() {
+    setItems(prevItems => {
+      return [
+        ...prevItems,
+        inputText
+      ];
+    });
 
-  function handleMouseOut() {
-    setIsMouseOver(false);
+    setInputText("");
   }
 
   return (
     <div className="container">
-      <h1>Hello {contact.fName} {contact.lName}</h1>
-      <p>{contact.email}</p>
-      <input onChange={handleChange} name="fName" placeholder="First Name" />
-      <input onChange={handleChange} name="lName" placeholder="Last Name" />
-      <input onChange={handleChange} name="email" placeholder="E-Mail" />
-      <button
-        style={{ backgroundColor: isMouseOver ? "black" : "white" }}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
-      >Submit</button>
+      <div className="heading">
+        <h1>To-Do List</h1>
+      </div>
+      <div className="form">
+        <input onChange={handleChange} type="text" value={inputText} />
+        <button onClick={addItem}>
+          <span>Add</span>
+        </button>
+      </div>
+      <div>
+        <ul>
+          {items.map(todoItem => <li>{todoItem}</li>)}
+        </ul>
+      </div>
     </div>
   );
 }
